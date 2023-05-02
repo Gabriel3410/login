@@ -14,6 +14,7 @@
             <ul class="list-group d-flex justify-content-center">
                 <li class="list-group-item text-center"><b>{{ $item->name }}</b></li>
                 <li class="list-group-item text-center"><b>{{ $item->email }}</b></li> 
+                <h2 class="text-center">Dados adicionais:</h2>
                 @foreach ($contato as $item)
                     @if ($item->user_id === auth()->user()->id)
                        <li class="list-group-item text-center"><b>{{ $item->cpf }}</b></li>
