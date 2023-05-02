@@ -83,7 +83,7 @@ class userController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('home')->with('status', 'Alterado com sucesso');
+        return redirect('/')->with('status', 'Alterado com sucesso');
     }
 
 

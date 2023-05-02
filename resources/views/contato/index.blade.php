@@ -15,7 +15,11 @@
     <table class="table table-striped table-light">
         @foreach ($contato as $item) 
         <tr>  
-            <td>{{$item->user->name}}</td>
+            <td> 
+                @foreach ($users as $item)
+                    {{$item->name}}
+                @endforeach 
+            </td>
             <td><a class="btn btn-primary" href="{{url('contato/'. $item->id)}}"> Visualizar</a></td>
             <td><a class="btn btn-warning" href="{{ url('contato/'. $item->id . '/edit')}}">Editar</a></td>
             <td>

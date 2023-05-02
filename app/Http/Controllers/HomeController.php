@@ -27,9 +27,10 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $contato = Contato::orderBy('cpf')->get();
-        $user = User::orderBy('name')->get();
-        return view('home', ['contato' =>$contato, 'user' => $user]);
+        $contato = Contato::orderBy('id')->get();
+        
+        $users = User::orderBy('name')->get();
+        return view('home', ['contato' =>$contato, 'users' => $users]);
     }
 
     public function show(string $id)

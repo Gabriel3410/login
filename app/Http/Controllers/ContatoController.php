@@ -13,8 +13,11 @@ class ContatoController extends Controller
      */
     public function index()
     {
+        
+        $users = User::orderBy('name')->get();
+     //   dd($users);
         $contato = Contato::orderBy('cpf')->get();
-        return view('contato.index', ['contato' => $contato]);
+        return view('contato.index', ['contato' => $contato, 'users' => $users]);
     }
 
     /**
@@ -43,7 +46,7 @@ class ContatoController extends Controller
         $contato->cel = $request->cel;
         $contato->save();
 
-        return redirect('home')->with('status', 'inserido com sucesso');
+        return redirect('/')->with('status', 'inserido com sucesso');
     }
 
     /**
@@ -52,8 +55,8 @@ class ContatoController extends Controller
     public function show(string $id)
     {
         $contato = Contato::find($id);
-
-        return view('contato.show', ['contato' => $contato]);
+        $users = User::orderBy('name')->get();
+        return view('contato.show', ['contato' => $contato, 'users' => $users]);
     }
 
     /**
@@ -72,17 +75,18 @@ class ContatoController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
+            'user_id' => 'required',
             'cpf' => 'required',
             'cel' => 'required',
         ]);
 
         $contato = Contato::findOrFail($id);
-        $contato->user_id;
+        $contato->user_id = $request->user_id;
         $contato->cpf = $request->cpf;
         $contato->cel = $request->cel;
         $contato->save();
 
-        return redirect('home')->with('status', 'Alterado com sucesso');
+        return redirect('/')->with('status', 'Alterado com sucesso');
     }
 
 

@@ -8,7 +8,9 @@
               @csrf
               <label class="form-label" for="user_id">Usuário:</label>
                 @foreach ($users as $item)
-                  <input class="form-control" type="text" name="user_id" id="id" value="{{$item->id}}">               
+                  @if ($item->name === auth()->user()->name)
+                      <input class="form-control" type="text" name="user_id" id="id" value="{{$item->id}}">
+                  @endif             
                 @endforeach
               <br> 
               <label for="cel" class="form-label">Cpf:</label>
