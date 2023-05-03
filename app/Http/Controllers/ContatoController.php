@@ -34,19 +34,38 @@ class ContatoController extends Controller
      */
     public function store(Request $request)
     {
+
+        //dd($request->all());
         $validated = $request->validate([
             'user_id' => 'required',
-            'cpf' => 'nullable|required|string|',
-            'cel' => 'nullable|required|string|' 
+            'cpf' => 'required|string',
+            'cel' => 'required|string' 
         ]);
+        
+        $contatoExist = Contato::where('user_id', $request->user_id)->exists();
+        //dd($contatoExist);
 
-        $contato = new Contato;
-        $contato->user_id = $request->user_id;
-        $contato->cpf = $request->cpf;
-        $contato->cel = $request->cel;
-        $contato->save();
+        if($contatoExist)
+        {
+            $contato = Contato::where('user_id', $request->user_id)->first();
+            $contato->user_id   = $request->user_id;
+            $contato->cpf       = $request->cpf;
+            $contato->cel       = $request->cel;
+            $contato->save();
+            
+            return redirect('/')->with('status', 'Alteredo com sucesso');
+        }else{
 
-        return redirect('/')->with('status', 'inserido com sucesso');
+            $contato = new Contato;
+            $contato->user_id   = $request->user_id;
+            $contato->cpf       = $request->cpf;
+            $contato->cel       = $request->cel;
+            $contato->save();
+
+            return redirect('/')->with('status', 'inserido com sucesso');
+        }
+
+        
     }
 
     /**
@@ -66,6 +85,7 @@ class ContatoController extends Controller
     {
         $users = User::orderBy('name')->get();
         $contato = Contato::find($id);
+        
         return view('contato.edit', ['contato'=> $contato,'users' => $users]);
     }
 
@@ -98,6 +118,6 @@ class ContatoController extends Controller
         $contato = Contato::find($id);
         $contato->delete();
 
-        return redirect('/contato')->with('status', 'Excluido com sucesso');
+        return redirect('home')->with('status', 'Excluido com sucesso');
     }
 }

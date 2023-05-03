@@ -22,7 +22,7 @@ use App\Http\Controllers\UserController;
 Route::get('/contato', [ContatoController::class, 'index'])
     ->name('contato.index')->middleware('auth');
 
-Route::get('/contato/create', [ContatoController::class, 'create'])
+Route::get('/contato/create/{id}', [ContatoController::class, 'create'])
     ->name('contato.create')->middleware('auth');
 
 Route::post('/contato/create',[ContatoController::class, 'store'])

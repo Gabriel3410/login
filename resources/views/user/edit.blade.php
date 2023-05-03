@@ -18,7 +18,7 @@
         </div>
         <div class="form-group">
           <label for="password">Senha:</label>
-          <input type="password" class="form-control" id="password" name="password" value="{{($user->password)}}">
+          <input type="password" class="form-control" id="password" name="password" value="{{-- $user->password --}}">
         </div>
 
       <button type="submit" class="btn btn-primary mt-2">Enviar</button>   

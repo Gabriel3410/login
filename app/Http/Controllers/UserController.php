@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Contato;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -92,6 +93,9 @@ class userController extends Controller
      */
     public function destroy(string $id)
     {
+        $contato = Contato::where('user_id', $id)->first();
+        $contato->delete();
+
         $user = User::find($id);
         $user->delete();
 

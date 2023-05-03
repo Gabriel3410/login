@@ -30,8 +30,7 @@
         @if ($item->name === auth()->user()->name)
             <div class="d-flex justify-content-center mt-4">
                 <a class="btn btn-primary mx-2 shadow-sm" href="{{ url('/user/'.$item->id.'/edit')}}">Editar Cadastro</a> 
-                <a class="btn btn-secondary mx-2 shadow-sm" href="{{ url('/contato/create')}}">Informações adicionais</a>
-                <a class="btn btn-success mx-2 shadow-sm" href="{{ url('/contato/'.$item->id.'/edit')}}">Editar Informações</a>
+                <a class="btn btn-secondary mx-2 shadow-sm" href="{{ url('/contato/create/'. $item->id)}}">Manter cadastro</a>
             </div>
         @endif
     @endforeach
