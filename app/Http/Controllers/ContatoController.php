@@ -29,7 +29,7 @@ class ContatoController extends Controller
     {
         $image = Image::orderBy('fileName', 'ASC')->pluck('fileName', 'id');
         $users = User::orderBy('name')->get();
-        return view('contato.create', ['users' => $users, 'iamge' => $image]);
+        return view('contato.create', ['users' => $users, 'image' => $image]);
     }
 
     /**
@@ -41,6 +41,7 @@ class ContatoController extends Controller
         //dd($request->all());
         $validated = $request->validate([
             'user_id' => 'required',
+            'image_id' =>'required',
             'cpf' => 'required|string',
             'cel' => 'required|string' 
         ]);
@@ -51,6 +52,7 @@ class ContatoController extends Controller
         if($contatoExist)
         {
             $contato = Contato::where('user_id', $request->user_id)->first();
+            $contato->image_id  = $request->image_id;
             $contato->user_id   = $request->user_id;
             $contato->cpf       = $request->cpf;
             $contato->cel       = $request->cel;
@@ -60,6 +62,7 @@ class ContatoController extends Controller
         }else{
 
             $contato = new Contato;
+            $contato->image_id  = $request->image_id;
             $contato->user_id   = $request->user_id;
             $contato->cpf       = $request->cpf;
             $contato->cel       = $request->cel;
@@ -98,12 +101,14 @@ class ContatoController extends Controller
     public function update(Request $request, string $id)
     {
         $validated = $request->validate([
+            'image_id' => 'required',
             'user_id' => 'required',
             'cpf' => 'required',
             'cel' => 'required',
         ]);
 
         $contato = Contato::findOrFail($id);
+        $contato->image_id = $request->image_id;
         $contato->user_id = $request->user_id;
         $contato->cpf = $request->cpf;
         $contato->cel = $request->cel;

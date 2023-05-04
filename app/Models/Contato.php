@@ -18,6 +18,6 @@ class Contato extends Model
 
   public function images(): HasMany
     {
-        return $this->hasMany(Image::class, 'id', 'user_id');
+        return $this->hasMany(Image::class, 'id', 'image_id');
     }
 }

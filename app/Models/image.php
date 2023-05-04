@@ -18,6 +18,6 @@ class Image extends Model
 
     public function contato(): HasOne
     {
-        return $this->hasOne(Produto::class, 'id', 'user_id');
+        return $this->hasOne(Produto::class, 'id', 'image_id');
     }
 }
