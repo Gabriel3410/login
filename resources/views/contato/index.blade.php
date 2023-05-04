@@ -20,6 +20,7 @@
                     {{$item->name}}
                 @endforeach 
             </td>
+            <td><a class="btn btn-primary" href="{{url('/upload/image/'. $item->id)}}"> Imagem</a></td>
             <td><a class="btn btn-primary" href="{{url('contato/'. $item->id)}}"> Visualizar</a></td>
             <td><a class="btn btn-warning" href="{{ url('contato/'. $item->id . '/edit')}}">Editar</a></td>
             <td>

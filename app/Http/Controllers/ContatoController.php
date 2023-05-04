@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Contato;
 use App\Models\User;
+use App\Models\Image;
+
 
 class ContatoController extends Controller
 {
@@ -25,8 +27,9 @@ class ContatoController extends Controller
      */
     public function create()
     {
+        $image = Image::orderBy('fileName', 'ASC')->pluck('fileName', 'id');
         $users = User::orderBy('name')->get();
-        return view('contato.create', ['users' => $users]);
+        return view('contato.create', ['users' => $users, 'iamge' => $image]);
     }
 
     /**
