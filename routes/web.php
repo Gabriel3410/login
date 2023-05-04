@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserController;
 
 /*
@@ -68,6 +69,11 @@ Route::put('/user/{id}', [UserController::class, 'update'])
 //DELETE//
 Route::delete('/user/{id}', [UserController::class, 'destroy'])
     ->name('user.destroy')->middleware('auth');
+
+/* ------------------------------- Rota Upload -------------------------------------------- */
+
+Route::get('/upload/image', [UploadController::class, 'form_image'])
+    ->name('form_image');
 
 Auth::routes();
 
