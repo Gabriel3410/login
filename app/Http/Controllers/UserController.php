@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Contato;
+use App\Models\Image;
 use Illuminate\Support\Facades\Hash;
 
 
@@ -93,6 +94,9 @@ class userController extends Controller
      */
     public function destroy(string $id)
     {
+        $image = Image::where('image_id', $id);
+        $image->delete();
+
         $contato = Contato::where('user_id', $id)->first();
         $contato->delete();
 

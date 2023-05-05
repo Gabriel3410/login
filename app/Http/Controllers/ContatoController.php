@@ -27,9 +27,10 @@ class ContatoController extends Controller
      */
     public function create()
     {
-        $image = Image::orderBy('fileName', 'ASC')->pluck('fileName', 'id');
+        $contato = Contato::orderBy('user_id')->get();
+        $images = Image::orderBy('image_id')->get();
         $users = User::orderBy('name')->get();
-        return view('contato.create', ['users' => $users, 'image' => $image]);
+        return view('contato.create', ['users' => $users, 'images' => $images, 'contato' => $contato]);
     }
 
     /**

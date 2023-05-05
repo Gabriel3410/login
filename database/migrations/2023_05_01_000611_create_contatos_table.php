@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('contatos', function (Blueprint $table) {
             $table->id();
             $table->bigInteger('user_id');
+            $table->bigInteger('image_id');
             $table->string('cpf');
             $table->string('cel');
             $table->timestamps();

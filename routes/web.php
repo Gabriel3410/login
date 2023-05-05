@@ -72,11 +72,12 @@ Route::delete('/user/{id}', [UserController::class, 'destroy'])
 
 /* ------------------------------- Rota Upload -------------------------------------------- */
 
-Route::get('/upload/image', [UploadController::class, 'form_image'])
-    ->name('form_image')->middleware('auth');
+Route::get('/upload/image/{id}', [UploadController::class, 'form_image'])
+    ->name('form_image');
 
-Route::post('/upload/image', [UploadController::class, 'upload_image'])
-    ->name('upload_image')->middleware('auth');
+Route::post('/upload/image/', [UploadController::class, 'upload_image'])
+    ->name('upload_image');
+
 
 Auth::routes();
 

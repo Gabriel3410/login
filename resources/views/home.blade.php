@@ -6,6 +6,23 @@
 </div>
 
 <div class="container">
+
+    
+      
+    @if ($images)
+    <div class="row">
+        @foreach ($images as $image)
+            <div class="col-md-3 mb-3">
+                <div class="card">
+                    <div class="img-circle">
+                        <img class="card-img-top" src="{{url('storage/'. $image->path)}}" alt="{{ $image->fileName}}">
+                    </div>
+                </div>
+            </div>
+        @endforeach
+    </div>
+    @endif
+
     @foreach ($users as $item)
         @if ($item->name === auth()->user()->name)
         <div class="container">
@@ -34,6 +51,7 @@
             </div>
         @endif
     @endforeach
+    
 </div>
 
 

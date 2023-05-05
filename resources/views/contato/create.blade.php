@@ -6,7 +6,7 @@
       <div class="col-md-6">
             <form action="{{url('contato/create')}}" method="post">
               @csrf
-              <label class="form-label" for="user_id">Usuário:
+              <labe class="form-label" for="user_id">Usuário:
 
                 @foreach ($users as $item)
                   @if ($item->name === auth()->user()->name)
@@ -15,7 +15,15 @@
                   @endif             
                 @endforeach
 
-              </label>
+              </labe>
+              <br>
+              <a name="image_id" href="{{ url('/upload/image/'. $item->id) }}">Imagem</a>
+              @foreach ($images as $item)
+                
+                <input type="hidden" name="image_id" value="{{ $item->image_id}}">
+                {{$item->fileName}}
+            
+              @endforeach
               <br> 
               <label for="cpf" class="form-label">Cpf:</label>
               <input type="text" id="cpf" name="cpf" value="

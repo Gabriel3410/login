@@ -16,7 +16,7 @@ class Image extends Model
         'path'
     ];
 
-    public function contato(): HasOne
+    public function produto(): HasOne
     {
         return $this->hasOne(Produto::class, 'id', 'image_id');
     }

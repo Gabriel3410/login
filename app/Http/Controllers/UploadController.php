@@ -11,8 +11,7 @@ class UploadController extends Controller
     {
 
         $images = Image::where('image_id', $id)->get();
-        //dd('teste');
-        return view('upload/form_image', ['images' => $images, 'user_id' => $id]);
+        return view('upload/form_image', ['images' => $images, 'image_id' => $id]);
     }
 
     public function upload_image(Request $request)
@@ -34,7 +33,7 @@ class UploadController extends Controller
             $image->path = str_replace('public/', '' , $path);
             $image->save();
 
-            return redirect()->back()->with('success', 'Imagem enviada com sucesso!');
+            return redirect('/contato/create/{id}')->with('success', 'Imagem enviada com sucesso!');
         }
 
             return redirect()->back()->with('error', ' Nenhuma imagem enviada!');
