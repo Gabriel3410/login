@@ -43,8 +43,8 @@ class ContatoController extends Controller
         $validated = $request->validate([
             'user_id' => 'required',
             'image_id' =>'required',
-            'cpf' => 'required|string',
-            'cel' => 'required|string' 
+            'cpf' => 'required|string|cpf',
+            'cel' => 'required|celular-com-ddd'
         ]);
         
         $contatoExist = Contato::where('user_id', $request->user_id)->exists();
