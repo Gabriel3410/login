@@ -28,6 +28,9 @@
 
               </labe>
               <br>
+              @if (($images === auth()->user()->name))
+              <a href="{{ url('/upload/image/'. $item->id) }}" class="btn btn-warning">Imagem</a>
+              @endif
               <a href="{{ url('/upload/image/'. $item->id) }}" class="btn btn-warning">Imagem</a>
 
               @foreach ($images as $item)
