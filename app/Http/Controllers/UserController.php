@@ -97,7 +97,7 @@ class userController extends Controller
         $image = Image::where('image_id', $id);
         $image->delete();
 
-        $contato = Contato::where('user_id', $id)->first();
+        $contato = Contato::where('user_id', $id);
         $contato->delete();
 
         $user = User::find($id);

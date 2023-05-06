@@ -28,14 +28,28 @@
 
               </labe>
               <br>
-              <a href="{{ url('/upload/image/'. $item->id) }}" class="btn btn-warning">Imagem</a>
 
-              @foreach ($images as $item)
-                
-                <input type="hidden" name="image_id" value="{{ $item->image_id}}">
-                {{$item->fileName}}
-            
+              @foreach ($images as $image)
+              @if ($image->image_id === auth()->user()->id)
+              <a href="{{ url('/upload/image/'. $item->id) }}" class="btn btn-warning">Imagem</a>   
+              {{$image->fileName}}     
+              @endif            
               @endforeach
+              
+
+             {{--@foreach ($images as $image)   
+                  @if ($image->image_id === auth()->user()->id)
+                      
+                  @endif
+              @endforeach --}} 
+
+              {{-- 
+                @foreach ($images as $item)
+                  @if ($image->image_id === auth()->user()->id)
+                    <input type="hidden" name="image_id" value="{{ $item->id}}">
+                      {{$item->fileName}}
+                  @endif
+              @endforeach --}}
               <br> 
               <label for="cpf" class="form-label">Cpf:</label>
               <input type="text" id="cpf" name="cpf" value="

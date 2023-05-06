@@ -9,19 +9,21 @@
 
     
       
-    @if ($images)
+
     <div class="row">
         @foreach ($images as $image)
-            <div class="col-md-3 mb-3">
-                <div class="card" style="border:none">
-                    <div class="img-circle">
-                        <img class="card-img-top rounded-circle" src="{{url('storage/'. $image->path)}}" alt="{{ $image->fileName}}" style="width: 300px; height: 300px;">
+            @if ($image->image_id === auth()->user()->id)
+                <div class="col-md-3 mb-3" style="border:none">
+                    <div class="card" style="border:none">
+                        <div class="img-circle" style="width:150px;height:150px;overflow:hidden;border-radius:50%;margin:0 auto;">
+                            <img class="card-img-top" src="{{ url('storage/'.$image->path) }}" alt="{{ $image->fileName }}" style="width:100%;height:auto;border:none;">
+                        </div>
                     </div>
                 </div>
-            </div>
+                            
+            @endif    
         @endforeach
     </div>
-    @endif
     
 
     @foreach ($users as $item)
