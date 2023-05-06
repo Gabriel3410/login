@@ -13,15 +13,16 @@
     <div class="row">
         @foreach ($images as $image)
             <div class="col-md-3 mb-3">
-                <div class="card">
+                <div class="card" style="border:none">
                     <div class="img-circle">
-                        <img class="card-img-top" src="{{url('storage/'. $image->path)}}" alt="{{ $image->fileName}}">
+                        <img class="card-img-top rounded-circle" src="{{url('storage/'. $image->path)}}" alt="{{ $image->fileName}}" style="width: 300px; height: 300px;">
                     </div>
                 </div>
             </div>
         @endforeach
     </div>
     @endif
+    
 
     @foreach ($users as $item)
         @if ($item->name === auth()->user()->name)

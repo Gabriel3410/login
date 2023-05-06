@@ -15,6 +15,16 @@
 
     <!-- Scripts -->
     @vite(['resources/sass/app.scss', 'resources/js/app.js'])
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+
+    <style>
+        #coisa
+        {
+            border-radius: 0px 75px 1px 100px;
+            box-shadow: 2px 2px 2px 1px black;
+        }
+          </style>
 </head>
 <body>
     @if (session('status'))

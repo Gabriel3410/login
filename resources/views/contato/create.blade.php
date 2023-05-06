@@ -28,7 +28,8 @@
 
               </labe>
               <br>
-              <a name="image_id" href="{{ url('/upload/image/'. $item->id) }}">Imagem</a>
+              <a href="{{ url('/upload/image/'. $item->id) }}" class="btn btn-warning">Imagem</a>
+
               @foreach ($images as $item)
                 
                 <input type="hidden" name="image_id" value="{{ $item->image_id}}">
