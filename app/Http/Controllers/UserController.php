@@ -45,7 +45,7 @@ class userController extends Controller
         $user->password = Hash::make($request->password);
         $user->save();
 
-        return redirect('/user')->with('status', 'inserido com sucesso');
+        return redirect('/')->with('status', 'inserido com sucesso');
     }
 
     /**

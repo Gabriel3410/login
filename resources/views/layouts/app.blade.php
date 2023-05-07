@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{'Teste'}}</title>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -23,6 +23,21 @@
         {
             border-radius: 0px 75px 1px 100px;
             box-shadow: 2px 2px 2px 1px black;
+        }
+        #btn-1
+        {
+            margin-left: 5px;
+            width: 124px;
+            height: 55px;
+            margin-bottom: -280px;
+            margin-right: 60px;
+        }
+        #btn-2
+        {
+            margin-right: 5px;
+            width: 124px;
+            height: 55px;
+            margin-bottom: -65px;
         }
           </style>
 </head>

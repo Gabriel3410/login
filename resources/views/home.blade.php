@@ -2,20 +2,21 @@
 
 @section('content')
 <div class="container">
-    <h1 class="text-center mb-4">Bem-vindo, {{ auth()->user()->name }}</h1>
+    <h1 class="text-center">Bem-vindo, {{ auth()->user()->name }}</h1>
 </div>
 
 <div class="container">
 
     
       
-
-    <div class="row">
+<div class="position-relative">
+    <div class="row align-items-center">
+        <div class="position-absolute top-50 start-50"></div>
         @foreach ($images as $image)
             @if ($image->image_id === auth()->user()->id)
                 <div class="col-md-3 mb-3" style="border:none">
-                    <div class="card">
-                        <div class="img-circle" style="width:150px;height:150px;overflow:hidden;border-radius:50%;margin:0 auto;">
+                    <div class="card" style="border:none">
+                        <div class="img-circle" style="width:100px;height:100px;overflow:hidden;border-radius:50%;margin:0 auto;">
                             <img class="card-img-top" src="{{ url('storage/'.$image->path) }}" alt="{{ $image->fileName }}" style="width:100%;height:auto;border:none;">
                         </div>
                     </div>
@@ -23,14 +24,26 @@
                             
             @endif    
         @endforeach
-    </div>
     
 
     @foreach ($users as $item)
         @if ($item->name === auth()->user()->name)
+            <div class="d-flex justify-content-center align-items-center ">
+                <div class="mx-2 mb-6">
+                    <a class="btn btn-primary mx-2 shadow-sm" href="{{ url('/user/'.$item->id.'/edit')}}">Editar Cadastro</a> 
+                </div>
+                <div class="mx-2 mb-6">    
+                    <a class="btn btn-secondary mx-2 shadow-sm" href="{{ url('/contato/create/'. $item->id)}}">Contatos adicionais</a>
+                </div>    
+            </div>
+        @endif
+    @endforeach
+</div> 
+</div>
+    @foreach ($users as $item)
+        @if ($item->name === auth()->user()->name)
         <div class="container">
             <h2 class="text-center">Meus dados:</h2>
-            <p class="text-center">Aqui estão as informações do meu usuário:</p>
             <ul class="list-group d-flex justify-content-center">
                 <li class="list-group-item text-center"><b>{{ $item->name }}</b></li>
                 <li class="list-group-item text-center"><b>{{ $item->email }}</b></li> 
@@ -46,14 +59,7 @@
         @endif   
     @endforeach
 
-    @foreach ($users as $item)
-        @if ($item->name === auth()->user()->name)
-            <div class="d-flex justify-content-center mt-4">
-                <a class="btn btn-primary mx-2 shadow-sm" href="{{ url('/user/'.$item->id.'/edit')}}">Editar Cadastro</a> 
-                <a class="btn btn-secondary mx-2 shadow-sm" href="{{ url('/contato/create/'. $item->id)}}">Manter cadastro</a>
-            </div>
-        @endif
-    @endforeach
+ 
     
 </div>
 
