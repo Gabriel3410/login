@@ -18,3 +18,6 @@ composer require laravellegends/pt-br-validator
 ```
 composer require laravel/ui
 ```
+```
+npm install
+```
