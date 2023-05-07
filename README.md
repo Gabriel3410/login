@@ -7,15 +7,15 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## Learning Laravel
+## Instalação
 
-//upload de imagens
+```
 php artisan storage:link
 
-// validação de cpf e celular
+```
+```
 composer require laravellegends/pt-br-validator
-
-// views
+```
+```
 composer require laravel/ui
-npm install
-npm run dev
+```
